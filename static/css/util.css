@@ -1,0 +1,294 @@
+path{
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2;
+}
+.padding-top-10{
+  padding-top: 10px;
+}
+.width-200{
+  width: 200px;
+}
+.b-width-100{
+  width: 100%;
+}
+. custom-active{
+  color: #409EFF;
+  border-color: #c6e2ff;
+  background-color: #ecf5ff;
+}
+/** el-tag */
+#table_div span{
+ /* background-color: white;*/
+  font-size: 14px;
+  margin-right: 5px;
+  margin-top: 4px;
+  cursor:pointer;
+}
+
+
+#table_div .el-card__header{
+  padding: 10px;
+}
+#table_div .el-card__body{
+  padding: 5px;
+}
+#table_div .active_util{
+  background: #39f;
+  color: white;
+}
+
+.active_util{
+  background: #39f;
+  color: white;
+}
+/* 右键菜单弹出提示框样式 start */
+.contextmenu {
+  display: none;
+  position: absolute;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  background: #FFFFFF;
+  border-radius: 5px;
+  list-style: none;
+  box-shadow: 0 15px 35px rgba(50,50,90,0.1),  0 5px 15px rgba(0,0,0,0.07);
+  overflow: hidden;
+  z-index: 999999;
+}
+
+.contextmenu li {
+  border-left: 3px solid transparent;
+  transition: ease .2s;
+}
+
+.contextmenu li a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  transition: ease .2s;
+}
+
+.contextmenu li:hover {
+  background: #39f;
+  border-left: 3px solid #1d8ce0;
+}
+
+.contextmenu li:hover a {
+  color: #FFFFFF;
+}
+/* 右键菜单弹出提示框样式 end */
+#top_map span{
+  /* background-color: white;*/
+  font-size: 14px;
+  margin-right: 5px;
+  margin-top: 4px;
+  cursor:pointer;
+}
+
+
+#top_map .el-card__header{
+  padding: 10px;
+}
+#top_map .el-card__body{
+  padding: 5px;
+}
+#top_map .active_util{
+  background: #39f;
+  color: white;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.width_percent_19{
+  width: 29%;
+}
+.width_percent_80{
+  width: 70%;
+}
+.min-height_entity{
+  min-height: 500px;
+}
+.min-height_600{
+  min-height: 600px;
+}
+.pointer{
+  cursor:pointer;
+}
+.font_16{
+  font-size: 16px;
+}
+.scroll{
+  overflow-y:scroll;
+  overflow :auto;
+}
+.max-height-600{
+  max-height: 600px;
+}
+.max-height-entity{
+  max-height: 450px;
+}
+.text {
+  font-size: 14px;
+}
+.text_{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item {
+  margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both
+}
+
+/*.box-card {
+  width: 480px;
+}*/
+.el-tag {
+  margin-right: 10px;
+}
+
+#concept_list_show .active_util{
+  background: #39f;
+  color: white;
+}
+#concept_list_show_ .active_util{
+  background: #39f;
+  color: white;
+}
+#concept_list .active_util{
+  background: #39f;
+  color: white;
+}
+.span_right_10{
+  margin-right: 10px;
+}
+.font_16{
+  font-size: 16px;
+  font-weight: bold;
+}
+.color_red label{
+  color: red;
+}
+/* div 底部显示横线*/
+.border-bottom_line{
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 5px;
+}
+.border-bottom_line_1{
+  border-bottom: 1px solid #dddddd;
+}
+.el-select .el-input{
+  width: 100%;
+}
+.menu_div_text{
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid #dddddd;
+  line-height: 50px;
+}
+.menu_div_text .title{
+  padding: 0px 20px;
+}
+.button_{
+  float: right;
+  width: 50%;
+  margin-top: 11px;
+  margin-right: 20px;
+}
+.right{
+  float: right;
+}
+.left{
+  float: left;
+}
+.menu_div_content{
+  float: left;
+  width: 100%;
+}
+.el-col_right{
+  text-align: right;
+  font-weight: bold;
+  padding-right: 5px;
+}
+.el-col_left{
+  text-align: left;
+
+  padding-left: 5px;
+}
+.el-row_{
+  margin: 10px 0px;
+  line-height: 30px;
+  padding-right: 30px;
+}
+.margin_20{
+  margin-top: 20px;
+}
+.div_line{
+  border: 1px solid #dddddd;
+}
+.div_line_bottom{
+  border-bottom: 1px solid #dddddd;
+}
+.item_ {
+  margin: 5px;
+}
+.padding-right-10{
+  padding-right: 10px;
+}
+.margin-top-10{
+  margin-top: 10px;
+}
+
+.margin-bottom-30{
+  margin-bottom: 30px;
+}
+.width-22_{
+  width: 20%;
+  margin: 4px;
+  float: left;
+}
+.width-4_{
+  width: 4%;
+  float: left;
+}
+.margin-10{
+  margin: 10px;
+}
+.width-30_{
+  width: 33%;
+  float: left;
+  padding: 4px;
+}
+
+.div_min_height{
+   min-height: 600px;
+}
+/**
+仿制card 头部
+ */
+.card_self{
+  padding: 18px 20px;
+  border: 1px solid #EBEEF5;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;"
+}
+/*手型*/
+.cursor_pointer{
+  cursor:pointer;
+}
+.margin-top-bottom-20{
+  margin: 20px 0px;
+}
