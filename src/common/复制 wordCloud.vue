@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       dataInfo: {
-  			changeSign:true,
+  			changeSign:false,
 				dataUrl:'https://gw.alipayobjects.com/os/antvdemo/assets/data/antv-keywords.json',
 				imageMask:'https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*07tdTIOmvlYAAAAAAAAAAABkARQnAQ',
 				wordField:'name',
@@ -88,14 +88,15 @@ export default {
 			});
 	},
 	updateData(newObj) {
-//    this.changeSign = false;
-      this.$nextTick(function () {
-        this._updateData(newObj);
-//      this.changeSign = true;
-        this.$nextTick(function () {
-          this.showCloud(newObj);
-        });
-      });
+    this._updateData(newObj);
+    
+			fetch(newObj.dataUrl)
+				.then((res) => res.json())
+				.then((data) => {
+					newObj.data=data
+					const wordCloud = new WordCloud('container',newObj);
+					wordCloud.update(newObj);
+			});
     },
     _updateData(newObj) {
       for (var k in newObj) {

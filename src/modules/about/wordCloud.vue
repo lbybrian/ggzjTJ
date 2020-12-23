@@ -100,7 +100,8 @@ export default {
   },
   mounted() {
     this.$nextTick(function () {
-      this.basicData = { ...this.$refs.exampleItem.dataObj.data };
+      this.basicData = { ...this.$refs.exampleItem.dataObj };
+//    console.log('找找啊啊啊啊',this.basicData)
     });
   },
   data() {
@@ -301,33 +302,57 @@ export default {
         this.$refs.exampleItem.$refs.exampleTestItem &&
         this.$refs.exampleItem.$refs.exampleTestItem.showCloud
       ) {
-//    	console.log('我的我的',)
-//      this.$refs.exampleItem.$refs.exampleTestItem.updateData(data);
         this.$refs.exampleItem.$refs.exampleTestItem.showCloud(data);
       }
     },
     exampleCallback1() {
       var tData = { ...this.basicData };
-      tData.withIndex = true;
-      tData.withSelection = true;
-      this.updateExampleData(tData[0].imageMask);
-      //        	console.log('看看11',tData[0].imageMask)
+      tData.imageMask = "https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*07tdTIOmvlYAAAAAAAAAAABkARQnAQ";
+//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=!this.$refs.exampleItem.$refs.exampleTestItem.isShow;
+//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=false;
+      tData.changeSign=false;
+      console.log('q1q1q1q1q1q1q1',tData.imageMask,)
+//    this.$refs.exampleItem.dataObj.imageMask="https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*07tdTIOmvlYAAAAAAAAAAABkARQnAQ";
+      this.updateExampleData(tData);
     },
     exampleCallback2() {
-//  	console.log('看看22',this.basicData)
       var tData = { ...this.basicData };
-      tData.withIndex = false;
-      tData.withSelection = false;
-      this.updateExampleData(tData[1].imageMask);
+      tData.imageMask='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3918304302,2876966628&fm=26&gp=0.jpg';
+//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=!this.$refs.exampleItem.$refs.exampleTestItem.isShow;
+//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=false;
+      tData.changeSign=true;
+      console.log('2w2w2w2w2w2w2w',tData.imageMask,)
+//    this.$refs.exampleItem.dataObj.imageMask="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3918304302,2876966628&fm=26&gp=0.jpg";
+      this.updateExampleData(tData);
     },
     exampleCallback3() {
-//  	console.log('看看33',this.basicData)
       var tData = { ...this.basicData };
-      tData.withIndex = true;
-      tData.withSelection = false;
-      tData.page = null;
-      this.updateExampleData(tData[2].imageMask);
+      tData.imageMask='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2696112892,3612948094&fm=26&gp=0.jpg';
+//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=!this.$refs.exampleItem.$refs.exampleTestItem.isShow;
+//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=false;
+      tData.changeSign=true;
+      console.log('3e3e3e3e3e3e3e3e3e',tData.imageMask,)
+//    this.$refs.exampleItem.dataObj.imageMask="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2696112892,3612948094&fm=26&gp=0.jpg";
+      this.updateExampleData(tData);
     },
+//  exampleCallback1() {
+//    var tData = { ...this.basicData };
+//    tData.ImageBitmap = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3183640937,1982156122&fm=26&gp=0.jpg";
+//    this.updateExampleData(tData);
+//  },
+//  exampleCallback2() {
+////  	console.log('看看22',this.basicData)
+//    var tData = { ...this.basicData };
+//    tData.imageMask='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=144259653,1738085311&fm=26&gp=0.jpg';
+//    this.updateExampleData(tData[1].imageMask);
+//		console.log('看看22',tData[1].imageMask)
+//  },
+//  exampleCallback3() {
+////  	console.log('看看33',this.basicData)
+//    var tData = { ...this.basicData };
+//    this.updateExampleData(tData[2].imageMask);
+//		console.log('看看33',tData[2].imageMask)
+//  },
     dealSelectExample(v) {
       console.log(v);
       if (v && typeof this[v] === "function") {

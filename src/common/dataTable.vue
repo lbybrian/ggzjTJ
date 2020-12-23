@@ -155,6 +155,7 @@ export default {
   watch: {},
   mounted() {
     this.tableItem = this.$refs.dataTableItem;
+//  console.log('这是啥？？？？？？？',this.tableItem)
   },
   methods: {
     updateData(newObj) {
