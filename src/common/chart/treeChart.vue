@@ -15,7 +15,9 @@ export default {
   name: "",
   data() {
     return {
+      // 控制图表显示隐藏
       status: true,
+      // 树图的默认样式
       itemStyle: {
         type: "tree",
         id: 0,
@@ -24,25 +26,29 @@ export default {
         left: 64,
         bottom: 32,
         right: 160,
-
+        // 图元的大小
         symbolSize: 7,
-
+        // 树图在 正交布局 下，边的形状。分别有曲线和折线两种，对应的取值是 curve 和 polyline
         edgeShape: 'polyline',
+        // 分叉点与子树父节点的距离占整个子树高度的百分比。默认取值是 '50%'
         edgeForkPosition: '63%',
+        // 树图初始展开的层级（深度）
         initialTreeDepth: 3,
 
+        // 边的默认样式
         lineStyle: {
           width: 2,
           color:'#cecece'
         },
 
+        // 文本标签的样式
         label: {
           // backgroundColor: '#fff',
           position: 'left',
           verticalAlign: 'middle',
           align: 'right'
         },
-
+        // 叶子节点所对应的文本标签的样式。
         leaves: {
           label: {
             position: 'right',
@@ -51,14 +57,20 @@ export default {
           }
         },
 
+        // 控制子树折叠和展开
         expandAndCollapse: true,
+        // 初始动画的时长
         animationDuration: 550,
+        // 图例翻页时的动画时长
         animationDurationUpdate: 750
       },
+      // 标题的默认样式
       titleStyle: {
         text: "",
       },
       // xAxisStyle: {},
+
+      // 图例的默认样式
       tooltip: {},
       // yAxisStyle: {},
       dataInfo: {
@@ -201,6 +213,7 @@ export default {
     dataObj: Object,
   },
   mounted() {
+    //组件加载到页面后，更新图表
     var data = this.dataInfo;
     this.$nextTick(function () {
       var tData = this.dataObj || this.dataInfo;
@@ -208,6 +221,7 @@ export default {
     });
   },
   methods: {
+    //更新组件数据，并重绘图表
     updateData(data) {
       //恢复默认
       this.dataInfo = {
@@ -241,6 +255,7 @@ export default {
       //按新的option更新图表
       this.initChart();
     },
+    // 生成实际echart所需要option
     updateOption() {
       var data = this.dataInfo;
       this.option.title = data.titleStyle;
@@ -295,6 +310,7 @@ export default {
       //   }
       // }
     },
+    //按option更新图表
     updateView(elem, option) {
       if (this.chart) {
         echarts.dispose(this.chart);
@@ -305,13 +321,16 @@ export default {
       this.$forceUpdate();
       this.initChartEvent();
     },
+    // 初始化图表
     initChart() {
       var elem = this.$refs.chartItem;
       this.updateView(elem, this.option);
     },
+    //初始化组件所支持的用户事件
     initChartEvent() {
       var _self = this;
       this.chart.off("click");
+      //绑定鼠标点击事件，并释放该组件的鼠标点击事件
       this.chart.on("click", function (e) {
         if (e.componentType === "series") {
           _self.$emit("click", {
@@ -322,6 +341,7 @@ export default {
         }
       });
 
+      //绑定鼠标悬浮事件，并释放该组件的鼠标悬浮事件
       this.chart.off("mouseover");
       this.chart.on("mouseover", function (e) {
        if (e.componentType === "series") {

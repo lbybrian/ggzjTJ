@@ -107,6 +107,15 @@
       };
     },
     methods: {
+      handleCollapse(e) {
+        const target = e.target;
+        const id = target.get('modelId');
+        const item = graph.findById(id);
+        const nodeModel = item.getModel();
+        nodeModel.collapsed = !nodeModel.collapsed;
+        this.graph.layout()
+        this.graph.setItemState(item, 'collapse', nodeModel.collapsed)
+      },
       initGraph(option) {
         var rect = this.$refs.container.getClientRects();
         var param = {
@@ -176,6 +185,13 @@
           const edgeItem = e.item; // 获取被点击的边元素对象
           graph.setItemState(edgeItem, "click", true); // 设置当前边的 click 状态为 true
         });
+        var _self = this;
+        graph.on('collapse-text:click', e => {
+          _self.handleCollapse(e)
+        })
+        graph.on('collapse-back:click', e => {
+          _self.handleCollapse(e)
+        })
       },
       register() {
         G6.registerNode('card-node', {

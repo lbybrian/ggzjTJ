@@ -18,7 +18,10 @@ export default {
     return {
       dataObj: {
         color:['#1890ff','#2fc25b','#facc14','#223273','#8543e0','#13c2c2'],
-        title: "武器装备性能对比",
+        title: {
+            text: "",
+            textStyle:{}
+        },
         legendStyle: {
           left: 10,
           top: "middle",

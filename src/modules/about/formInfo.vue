@@ -319,6 +319,14 @@ export default {
           name: "各种类型的输入",
           callbackName: "exampleCallback3",
         },
+         {
+          name: "含提交重置按钮",
+          callbackName: "exampleCallback4",
+        },
+        {
+          name: "赋值输入框内容",
+          callbackName: "exampleCallback5",
+        },
       ],
     };
   },
@@ -412,7 +420,9 @@ export default {
           value: "",
           type: "checkbox",
           items: ["选项", "选项", "选项", "选项", "选项", "选项1"],
-          folding: true,
+          folding: false,
+          checkAll:false,
+          isIndeterminate:false
         },
         {
           name: "单选输入",
@@ -465,6 +475,288 @@ export default {
             },
           ],
         },
+      ];
+      this.updateExampleData(tData);
+    },
+    exampleCallback4() {
+      var tData = { ...this.basicData };
+      tData.labelWidth = "90px";
+      tData.data = [
+        {
+          name: "单行文本",
+          value: "",
+          type: "text",
+          must: true,
+          items: [
+            {
+              placeholder: "请输入单行文本",
+            },
+          ],
+        },
+        {
+          name: "多行文本",
+          value: "",
+          type: "textarea",
+          items: [
+            {
+              placeholder: "请输入文本",
+            },
+          ],
+        },
+        {
+          name: "只读文本",
+          value: "你好，我是不可编辑的文本",
+        },
+        {
+          name: "时间段",
+          value: "",
+          type: "dateRange",
+          items: [""],
+        },
+        {
+          name: "数字输入",
+          value: "",
+          type: "number",
+          must: true,
+          checkRule: [
+            {
+              message: "输入值必须大于2。",
+              callback: function (v) {
+                var ret = 0;
+                if (v < 2) {
+                  ret = 2;
+                }
+                return ret;
+              },
+            },
+          ],
+          items: [""],
+        },
+        {
+          name: "多选输入",
+          value: "",
+          type: "checkbox",
+          items: ["选项", "选项", "选项", "选项", "选项", "选项1"],
+          folding: false,
+          checkAll:false,
+          isIndeterminate:false
+        },
+        {
+          name: "单选输入",
+          value: "",
+          type: "radio",
+          items: ["选项1", "选项2", "选项3", "选项4", "选项5", "选项6"],
+        },
+        {
+          name: "选择框输入",
+          value: "",
+          type: "select",
+          items: [
+            {
+              options: ["选项1", "选项2", "选项3", "选项4", "选项5", "选项6"],
+            },
+          ],
+        },
+        {
+          name: "时间输入",
+          value: "",
+          type: "datePicker",
+          items: [""],
+        },
+        {
+          name: "开关输入",
+          value: "",
+          type: "switch",
+          items: [""],
+        },
+        {
+          name: "显示标签",
+          value: "",
+          type: "tags",
+          items: [
+            {
+              value: [
+                {
+                  name: "标签1",
+                  type: "primary",
+                },
+                {
+                  name: "标签2",
+                  type: "primary",
+                },
+                {
+                  name: "标签3",
+                  type: "primary",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name:"提交重置",
+          value:"",
+          type:"button",
+          items:[
+            // {
+            //   value:[
+                {
+                  name:"提交",
+                  type:"button1",
+                },
+                {
+                  name:"重置",
+                  type:"button2",
+                },
+                // {
+                //   name:"配置按钮",
+                //   type:"button3",
+                // }
+            //   ]
+            // }
+          ],
+        }
+      ];
+      this.updateExampleData(tData);
+    },
+    exampleCallback5(){
+      var tData = { ...this.basicData };
+      tData.labelWidth = "90px";
+      tData.str1='单行文本赋值内容测试测试测试测试测试';
+      tData.str2='多行文本赋值内容测试测试测试测试测试';
+      tData.data = [
+        {
+          name: "单行文本",
+          value: "",
+          type: "text",
+          must: true,
+          items: [
+            {
+              placeholder: "请输入单行文本",
+            },
+          ],
+        },
+        {
+          name: "多行文本",
+          value: "",
+          type: "textarea",
+          items: [
+            {
+              placeholder: "请输入文本",
+            },
+          ],
+        },
+        {
+          name: "只读文本",
+          value: "你好，我是不可编辑的文本",
+        },
+        {
+          name: "时间段",
+          value: "",
+          type: "dateRange",
+          items: [""],
+        },
+        {
+          name: "数字输入",
+          value: "",
+          type: "number",
+          must: true,
+          checkRule: [
+            {
+              message: "输入值必须大于2。",
+              callback: function (v) {
+                var ret = 0;
+                if (v < 2) {
+                  ret = 2;
+                }
+                return ret;
+              },
+            },
+          ],
+          items: [""],
+        },
+        {
+          name: "多选输入",
+          value: "",
+          type: "checkbox",
+          items: ["选项", "选项", "选项", "选项", "选项", "选项1"],
+          folding: false,
+          checkAll:false,
+          isIndeterminate:false
+        },
+        {
+          name: "单选输入",
+          value: "",
+          type: "radio",
+          items: ["选项1", "选项2", "选项3", "选项4", "选项5", "选项6"],
+        },
+        {
+          name: "选择框输入",
+          value: "",
+          type: "select",
+          items: [
+            {
+              options: ["选项1", "选项2", "选项3", "选项4", "选项5", "选项6"],
+            },
+          ],
+        },
+        {
+          name: "时间输入",
+          value: "",
+          type: "datePicker",
+          items: [""],
+        },
+        {
+          name: "开关输入",
+          value: "",
+          type: "switch",
+          items: [""],
+        },
+        {
+          name: "显示标签",
+          value: "",
+          type: "tags",
+          items: [
+            {
+              value: [
+                {
+                  name: "标签1",
+                  type: "primary",
+                },
+                {
+                  name: "标签2",
+                  type: "primary",
+                },
+                {
+                  name: "标签3",
+                  type: "primary",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name:"提交重置",
+          value:"",
+          type:"button",
+          items:[
+            // {
+            //   value:[
+                {
+                  name:"提交",
+                  type:"button1",
+                },
+                {
+                  name:"重置",
+                  type:"button2",
+                },
+                // {
+                //   name:"配置按钮",
+                //   type:"button3",
+                // }
+            //   ]
+            // }
+          ],
+        }
       ];
       this.updateExampleData(tData);
     },

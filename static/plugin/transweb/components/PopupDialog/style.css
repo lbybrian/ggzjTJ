@@ -1,0 +1,52 @@
+.tPopupDialog {
+    top: 0px;
+    left: 0px;
+    position: fixed !important;
+    z-index: 9999;
+}
+
+.PopupDialog_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    border-radius: 5px;
+    padding: 4px 4px 6px 4px;
+    background: rgba(1, 134, 134, 0.8);
+    color: #fff;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.PopupDialog_container:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    bottom: -5px;
+    left: calc( 50% - 10px);
+    width: 0;
+    height: 0;
+    border-top: 5px solid rgba(1, 134, 134, 0.9);
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+.PopupDialog_header {
+    width: 100%;
+    padding: 5px;
+    margin: 0px;
+}
+
+.PopupDialog_content {
+    width: 100%;
+}
+
+.PopupDialog_title {
+    float: left;
+}
+
+.PopupDialog_closeBtn {
+    float: right;
+}

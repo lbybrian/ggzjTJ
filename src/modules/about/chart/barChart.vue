@@ -250,9 +250,25 @@ export default {
           callbackName: "exampleCallback2",
         },
         {
-          name: "多个系列柱形",
+          name: "横向多种类柱形图",
           callbackName: "exampleCallback3",
         },
+         {
+          name: "纵向多种类柱形图",
+          callbackName: "exampleCallback4",
+        },
+        {
+          name: "横向堆叠柱形图",
+          callbackName: "exampleCallback5",
+        },
+        {
+          name: "纵向堆叠柱形图",
+          callbackName: "exampleCallback6",
+        },
+        {
+          name: "弧形柱形图",
+          callbackName: "exampleCallback7",
+        }
       ],
     };
   },
@@ -315,6 +331,358 @@ export default {
           value: [3000, 2000],
         },
       ];
+      this.updateExampleData(tData);
+    },
+    exampleCallback4() {
+      var tData = { ...this.basicData };
+      tData.name = ["销量", "库存"];
+      tData.mode = "vertical";
+      tData.data = [
+        {
+          name: "AK47",
+          value: [1300, 2000],
+        },
+        {
+          name: "Mp5冲锋枪",
+          value: [3400, 2100],
+        },
+        {
+          name: "榴弹",
+          value: [1000, 2000],
+        },
+        {
+          name: "AWP狙击枪",
+          value: [5000, 5000],
+        },
+        {
+          name: "加农炮",
+          value: [13000, 2000],
+        },
+        {
+          name: "马克沁机枪",
+          value: [3000, 2000],
+        },
+      ];
+      this.updateExampleData(tData);
+    },
+    exampleCallback5() {
+      var tData = { ...this.basicData };
+      tData.mode = "horizontal";
+      tData.name = ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'];
+      tData.data = [
+        {
+            name: '周一',
+            type: 'bar',
+            stack: '总量',
+            value: [320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+            name: '周二',
+            type: 'bar',
+            stack: '总量',
+            value: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '周三',
+            type: 'bar',
+            stack: '总量',
+            value: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: '周四',
+            type: 'bar',
+            stack: '总量',
+            value: [150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '周五',
+            type: 'bar',
+            stack: '总量',
+            value: [820, 832, 901, 934, 1290, 1330, 1320]
+        }
+      ];
+      this.updateExampleData(tData);
+    },
+    exampleCallback6() {
+      var tData = { ...this.basicData };
+      tData.mode = "vertical";
+      tData.name = ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'];
+      tData.data = [
+        {
+            name: '周一',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            value: [320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+            name: '周二',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            value: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '周三',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            value: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: '周四',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            value: [150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '周五',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                position: 'insideRight'
+            },
+            value: [820, 832, 901, 934, 1290, 1330, 1320]
+        }
+      ];
+      this.updateExampleData(tData);
+    },
+    exampleCallback7() {
+      var tData = { ...this.basicData };
+      tData.mode = "vertical";
+      tData.title = {
+        text:'你好',
+        textStyle:{
+          color:'pink'
+        }
+      }
+     tData.yAxisStyle= {
+            position: "left",
+            name: "分值",
+            nameTextStyle:{//y轴上方单位的颜色
+              color:'#fff'  
+            },
+            axisLine: {
+              show: true, //坐标轴轴线
+              color: "#EBEEF5",
+            },
+            axisTick: {
+              show: false, //坐标轴刻度
+            },
+            splitLine: {
+              //网格线
+              show: false,
+            },
+            axisLabel : {
+                formatter: '{value}',
+                textStyle: { //改变刻度字体样式
+                    color: '#000'
+                }
+            }
+          },
+     tData.xAxisStyle= {
+            axisLine: {
+              show: true, //坐标轴轴线
+              color: "#EBEEF5",
+            },
+            axisTick: {
+              show: false, //坐标轴刻度
+            },
+            splitLine: {
+              //网格线
+              show: false,
+            },
+            axisLabel : {
+                formatter: '{value}',
+                textStyle: { //改变刻度字体样式
+                    color: '#000'
+                }
+            }
+          },
+      tData.data = [
+          {
+            name: "AK47",
+            value: 3000,
+            //柱子上的字体
+            label: {
+                normal: {
+                  show: true,
+                  position: "top",
+                  textStyle: {
+                    color: "#4a99e2",
+                  },
+                  formatter: function (params) {
+                    return params.value;
+                  },
+                },
+            },
+            itemStyle: {
+                //柱形图圆角，鼠标移上去效果
+                emphasis: {
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+                normal: {
+                  //柱形图圆角，初始化效果
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+              },
+              barWidth:35,
+          },
+          {
+            name: "Mp5冲锋枪",
+            value: 2500,
+             //柱子上的字体
+            label: {
+                normal: {
+                  show: true,
+                  position: "top",
+                  textStyle: {
+                    color: "#4a99e2",
+                  },
+                  formatter: function (params) {
+                    return params.value;
+                  },
+                },
+            },
+            itemStyle: {
+                //柱形图圆角，鼠标移上去效果
+                emphasis: {
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+                normal: {
+                  //柱形图圆角，初始化效果
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+              },
+              barWidth:35,
+          },
+          {
+            name: "榴弹",
+            value: 1000,
+             //柱子上的字体
+            label: {
+                normal: {
+                  show: true,
+                  position: "top",
+                  textStyle: {
+                    color: "#4a99e2",
+                  },
+                  formatter: function (params) {
+                    return params.value;
+                  },
+                },
+            },
+            itemStyle: {
+                //柱形图圆角，鼠标移上去效果
+                emphasis: {
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+                normal: {
+                  //柱形图圆角，初始化效果
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+              },
+              barWidth:35,
+          },
+          {
+            name: "AWP狙击枪",
+            value: 8000,
+             //柱子上的字体
+            label: {
+                normal: {
+                  show: true,
+                  position: "top",
+                  textStyle: {
+                    color: "#4a99e2",
+                  },
+                  formatter: function (params) {
+                    return params.value;
+                  },
+                },
+            },
+            itemStyle: {
+                //柱形图圆角，鼠标移上去效果
+                emphasis: {
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+                normal: {
+                  //柱形图圆角，初始化效果
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+              },
+              barWidth:35,
+          },
+          {
+            name: "加农炮",
+            value: 28000,
+             //柱子上的字体
+            label: {
+                normal: {
+                  show: true,
+                  position: "top",
+                  textStyle: {
+                    color: "#4a99e2",
+                  },
+                  formatter: function (params) {
+                    return params.value;
+                  },
+                },
+            },
+            itemStyle: {
+                //柱形图圆角，鼠标移上去效果
+                emphasis: {
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+                normal: {
+                  //柱形图圆角，初始化效果
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+              },
+              barWidth:35,
+          },
+          {
+            name: "马克沁机枪",
+            value: 12000,
+             //柱子上的字体
+            label: {
+                normal: {
+                  show: true,
+                  position: "top",
+                  textStyle: {
+                    color: "#4a99e2",
+                  },
+                  formatter: function (params) {
+                    return params.value;
+                  },
+                },
+            },
+            itemStyle: {
+                //柱形图圆角，鼠标移上去效果
+                emphasis: {
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+                normal: {
+                  //柱形图圆角，初始化效果
+                  barBorderRadius: [30, 30, 0, 0],
+                },
+              },
+              barWidth:35,
+          },
+        ]
       this.updateExampleData(tData);
     },
     dealSelectExample(v) {

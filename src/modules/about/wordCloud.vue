@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 20px 40px"> 
+  <div style="padding: 20px 40px">
     <el-collapse v-model="activeNames" :accordion="true" style="width: 1000px">
       <el-collapse-item title="组件示例" name="1">
         <h2 style="position: relative; float: left; width: 100%">
@@ -101,7 +101,6 @@ export default {
   mounted() {
     this.$nextTick(function () {
       this.basicData = { ...this.$refs.exampleItem.dataObj };
-//    console.log('找找啊啊啊啊',this.basicData)
     });
   },
   data() {
@@ -140,15 +139,10 @@ export default {
         ],
         data: [
           {
-            name: "on",
-            param: "chart.on('eventName', callback);",
-            description: "在 Chart 和 View 上通过 on 绑定事件。",
-          },
-          {
-            name: "off",
-            param: "chart.off('eventName', callback);",
-            description: "在 Chart 和 View 上通过off 移除绑定事件。",
-          },
+            name:"mouseover",
+            param:"-",
+            description:"当鼠标放上时触发该事件"
+          }
         ],
       },
       paramDescription: {
@@ -172,11 +166,17 @@ export default {
             prop: "option",
             label: "可选值",
             align: "center",
-            width: "180",
+            width: "120",
           },
           {
             prop: "default",
             label: "默认值",
+            align: "center",
+            width: "120",
+          },
+          {
+            prop: "protocol",
+            label: "可选性",
             align: "center",
             width: "120",
           },
@@ -186,44 +186,66 @@ export default {
             name: "data",
             description: "设置图表数据源。数据源为对象集合",
             type: "array object",
-            required:true,
+            option: "-",
+            default: "-",
+            protocol:'required',
+          },
+          {
+            name: "imageMask",
+            description: "设置一张图片，然后图表就可以根据该图片的形状进行渲染，可以是图片元素实例或者 url 地址和 base64。注意： 词语只渲染在图片的深色部位，浅色的部位（如白色）不渲染词语。当使用图片的 url 地址时，图片的大小不宜过大，不然图片加载时间过长。",
+            type: "HTMLImageElement | string",
+           option: "-",
+            default: "-", protocol:'optional',
+          },
+          {
+            name: "wordStyle",
+            description: "设置每个词语的样式",
+            type: "object",
+           option: "-",
+            default: "-", protocol:'optional',
           },
           {
             name: "wordField",
             description: "单词内容在数据中所对应的字段名。",
             type: "string",
-            required:true,
+          option: "-",
+            default: "-",  protocol:'required',
           },
           {
             name: "weightField",
             description: "单词所占权重在数据中所对应的字段名。",
             type: "string",
-            required:true,
+          option: "-",
+            default: "-",  protocol:'required',
           },
           {
             name: "colorField",
             description: "根据该字段进行颜色映射。",
             type: "string",
-            required:false,
+          option: "-",
+            default: "-",  protocol:'optional',
           },
           {
             name: "random",
             description: "自定义所使用的随机函数，其值可以是一个 [0, 1) 区间中的值，也可以是一个返回该值的函数，当该值是一个固定的值时，每次渲染相同数据的词云图时，其对应的每个单词的布局坐标一致。",
             type: "number | function",
-            required:false,
+         option: "-",
+            default: "-",   protocol:'optional',
           },
           {
             name: "timeInterval",
             description: "设置绘制程序最大的执行时间，单位毫秒，如果时间设置过短可能会只绘制一部分词语。",
             type: "number",
-            required:false,
+          option: "-",
+            default: "-",  protocol:'optional',
             defalut:2000,
           },
           {
             name: "meta",
             description: "全局化配置图表数据元信息，以字段为单位进行配置。在 meta 上的配置将同时影响所有组件的文本信息。",
             type: "object",
-            required:false,
+           option: "-",
+            default: "-", protocol:'optional',
             children:[
             	{
 		            name: "alias",
@@ -269,14 +291,9 @@ export default {
         ],
         data: [
           {
-            name: "render()",
-            param: "-",
-            description: "渲染图表。",
-          },
-          {
-          	name:'update()',
+          	name:'updateData',
           	param: "-",
-            description: "更新图表配置项，配置覆盖，不会做差异比对。。",
+            description: "更新图表数据。",
           }
         ],
       },
@@ -286,73 +303,47 @@ export default {
           callbackName: "exampleCallback1",
         },
         {
-          name: "方形示例图",
+          name: "长方形示例图",
           callbackName: "exampleCallback2",
         },
         {
-          name: "圆形示例图",
+          name: "椭圆形示例图",
           callbackName: "exampleCallback3",
         },
       ],
     };
   },
   methods: {
-    updateExampleData(data) {
-      if (
-        this.$refs.exampleItem.$refs.exampleTestItem &&
-        this.$refs.exampleItem.$refs.exampleTestItem.showCloud
-      ) {
-        this.$refs.exampleItem.$refs.exampleTestItem.showCloud(data);
-      }
-    },
+  	updateExampleData(data) {
+        if (this.$refs.exampleItem && this.$refs.exampleItem.updateData) {
+          this.$refs.exampleItem.updateData(data);
+        }
+      },
     exampleCallback1() {
       var tData = { ...this.basicData };
-      tData.imageMask = "https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*07tdTIOmvlYAAAAAAAAAAABkARQnAQ";
-//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=!this.$refs.exampleItem.$refs.exampleTestItem.isShow;
-//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=false;
-      tData.changeSign=false;
-      console.log('q1q1q1q1q1q1q1',tData.imageMask,)
-//    this.$refs.exampleItem.dataObj.imageMask="https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*07tdTIOmvlYAAAAAAAAAAABkARQnAQ";
+      tData.imageMask = "/static/example/wordCloud/imgs/A_07tdTIOmvlYAAAAAAAAAAABkARQnAQ.png";
       this.updateExampleData(tData);
     },
     exampleCallback2() {
       var tData = { ...this.basicData };
-      tData.imageMask='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3918304302,2876966628&fm=26&gp=0.jpg';
-//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=!this.$refs.exampleItem.$refs.exampleTestItem.isShow;
-//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=false;
-      tData.changeSign=true;
-      console.log('2w2w2w2w2w2w2w',tData.imageMask,)
-//    this.$refs.exampleItem.dataObj.imageMask="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3918304302,2876966628&fm=26&gp=0.jpg";
+      tData.imageMask='/static/example/wordCloud/imgs/u=3918304302,2876966628&fm=26&gp=0.jpg';
+   //    tData.interactions=[{
+			// 			type: 'element-active'
+			// 		}];
+			// tData.state={
+			// 			active: {
+			// 				style: {
+			// 					lineWidth: 3,
+			// 				}
+			// 			}
+			// 		};
       this.updateExampleData(tData);
     },
     exampleCallback3() {
       var tData = { ...this.basicData };
-      tData.imageMask='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2696112892,3612948094&fm=26&gp=0.jpg';
-//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=!this.$refs.exampleItem.$refs.exampleTestItem.isShow;
-//    this.$refs.exampleItem.$refs.exampleTestItem.isShow=false;
-      tData.changeSign=true;
-      console.log('3e3e3e3e3e3e3e3e3e',tData.imageMask,)
-//    this.$refs.exampleItem.dataObj.imageMask="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2696112892,3612948094&fm=26&gp=0.jpg";
+      tData.imageMask='/static/example/wordCloud/imgs/u=2696112892,3612948094&fm=26&gp=0.jpg';
       this.updateExampleData(tData);
     },
-//  exampleCallback1() {
-//    var tData = { ...this.basicData };
-//    tData.ImageBitmap = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3183640937,1982156122&fm=26&gp=0.jpg";
-//    this.updateExampleData(tData);
-//  },
-//  exampleCallback2() {
-////  	console.log('看看22',this.basicData)
-//    var tData = { ...this.basicData };
-//    tData.imageMask='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=144259653,1738085311&fm=26&gp=0.jpg';
-//    this.updateExampleData(tData[1].imageMask);
-//		console.log('看看22',tData[1].imageMask)
-//  },
-//  exampleCallback3() {
-////  	console.log('看看33',this.basicData)
-//    var tData = { ...this.basicData };
-//    this.updateExampleData(tData[2].imageMask);
-//		console.log('看看33',tData[2].imageMask)
-//  },
     dealSelectExample(v) {
       console.log(v);
       if (v && typeof this[v] === "function") {
@@ -384,7 +375,7 @@ export default {
     },
     dealConfirmDialog() {
       var code = this.$refs.exampleStructItem.code;
-      console.log(code);
+//    console.log(code);
       try {
         this.updateExampleData(JSON.parse(code));
         // this.$refs.exampleTest.$forceUpdate();

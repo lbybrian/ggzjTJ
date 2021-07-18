@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <div class="father">
+         <div class="moveson"></div>
+    </div>
+
+    <style>
+      @keyframes mymove {
+        from{left:0px;}
+        to{left:700px;}
+      }
+      .father{
+      background: #748096;
+      border-radius:5px;
+      position: relative;
+      top: 70px;
+      left: -5px;
+      }
+
+      .moveson {
+      width:20px;
+      height:8px;
+      background:#a0e80c;
+      border-radius: 5px;
+      animation:mymove 5s linear infinite;
+      position:relative;
+      }
+
+    </style>
+  </body>
+</html>

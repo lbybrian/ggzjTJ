@@ -17,7 +17,11 @@ export default {
   data() {
     return {
       dataObj: {
-        name: "杀伤力",
+        //echarts 的标题
+        title: {
+            text: "杀伤力",
+            textStyle:{}
+        },
         color:['#1890ff','#2fc25b','#facc14','#223273','#8543e0','#13c2c2'],
         data: [
           {
@@ -52,6 +56,7 @@ export default {
   methods: {
     updateData(data) {
       this.dataObj = data;
+
       this.$refs.exampleTestItem.updateData(this.dataObj);
     },
   },

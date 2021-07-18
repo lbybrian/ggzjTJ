@@ -255,6 +255,10 @@ export default {
           name: "圆形雷达图",
           callbackName: "exampleCallback2",
         },
+        {
+          name: "雷达图上有文字",
+          callbackName: "exampleCallback3",
+        },
         
       ],
     };
@@ -277,7 +281,69 @@ export default {
     },
     exampleCallback3() {
       var tData = { ...this.basicData };
-      
+      tData.title =  { 
+          text: "雷达图",
+          //标题颜色
+          textStyle:{
+                color:"red"
+        },
+      };
+      tData.legendStyle = {
+        left: 10,
+        top: "middle",
+        orient: "vertical",
+        icon: "diamond",
+      };
+      tData.radarStyle.indicator = [
+          {
+                name: "文职人员法规政策",
+                max: 120,
+              },
+              {
+                name: "航天力量概述",
+                max: 120,
+              },
+              {
+                name: "航天法规政策",
+                max: 120,
+              },
+              {
+                name: "太空支援力量",
+                max: 120,
+              }
+      ];
+        //雷达上有字体的 外层的
+      tData.radarStyle.name =  {
+                formatter: '{value}',
+                textStyle: {
+                    color: 'red'
+                }
+            };
+      tData.data = [
+         {
+              name: "",
+              style: {
+                areaStyle: {
+                  color: "rgba(41,235,252,0.4)",
+                  opacity: 0.5,
+                },
+                lineStyle: {
+                  // color: "#AFFFFF",
+                },
+                //里面的
+                label: {
+                  show: true,
+                  color:"#000",
+                  formatter: function (params) {
+                      return params.value;
+                  }
+               },
+              },
+              value: [89, 79, 67, 97],
+            }
+      ]
+      tData.radarStyle.shape = "polygon";
+      console.log( tData ,99999999999999999999)
       this.updateExampleData(tData);
     },
     exampleCallback4() {

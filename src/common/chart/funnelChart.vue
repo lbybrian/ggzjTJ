@@ -167,6 +167,7 @@ export default {
             name: e.name,
             value: e.data,
             seriesName: e.seriesName
+
               });
             } 
           });

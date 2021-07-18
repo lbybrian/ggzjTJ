@@ -46,6 +46,7 @@ export default {
     dataObj: Object,
   },
   mounted() {
+    //组件加载到页面后，更新图表
     var data = this.dataInfo;
     this.$nextTick(function () {
       var tData = this.dataObj || this.dataInfo;
@@ -53,6 +54,7 @@ export default {
     });
   },
   methods: {
+    //更新组件数据，并重绘图表
     updateData(data) {
       //恢复默认
       this.dataInfo = {
@@ -78,6 +80,7 @@ export default {
       //按新的option更新图表
       this.initChart();
     },
+    //生成实际echart所需要option
     updateOption() {
       var data = this.dataInfo;
       this.option.title = data.titleStyle;
@@ -94,6 +97,7 @@ export default {
         this.option.series.push(item);
       }
     },
+    //按option更新图表
     updateView(elem, option) {
       if (this.chart) {
         echarts.dispose(this.chart);
@@ -103,10 +107,12 @@ export default {
       this.chart.setOption(option);
       this.initChartEvent();
     },
+    // 初始化图表
     initChart() {
       var elem = this.$refs.chartItem;
       this.updateView(elem, this.option);
     },
+    //初始化组件所支持的用户事件
     initChartEvent() {
       var _self = this;
       this.chart.off("click");

@@ -54,7 +54,7 @@ export default {
       defaultActive: "1-1",
       isCollapse: false,
       router: false,
-      mode: "horizontal",
+      mode: "vertical",
       menuData: [
         {
           icon: "",

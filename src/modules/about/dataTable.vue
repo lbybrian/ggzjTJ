@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 20px 40px"> 
+  <div style="padding: 20px 40px">
     <el-collapse v-model="activeNames" :accordion="true" style="width: 1000px">
       <el-collapse-item title="组件示例" name="1">
         <h2 style="position: relative; float: left; width: 100%">
@@ -288,7 +288,7 @@ export default {
           },
           {
             name: "size",
-            description: "是否支持复选Checkbox列",
+            description: "Table 的尺寸",
             type: "string",
             option: "medium / small / mini",
             default: "-",
@@ -521,7 +521,6 @@ export default {
         console.log(e);
       }
     },
-    dealSelectionChange(val) {},
   },
 };
 </script>
@@ -531,19 +530,6 @@ export default {
   box-sizing: border-box;
 }
 
-.introduce {
-  position: relative;
-  float: left;
-  max-width: 1200px;
-  margin-bottom: 20px;
-  padding-right: 20px;
-  width: 100%;
-}
-
-.introduce > h2 {
-  font-weight: 700;
-  margin-bottom: 5px;
-}
 
 /deep/ .CodeMirror {
   border-top: solid 1px #ddd;

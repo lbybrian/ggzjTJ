@@ -51,16 +51,17 @@ export default {
           },
         ],
         mode: "vertical",
-      },     
+      },
     };
   },
   methods: {
     updateData(data) {
       this.dataObj = data;
       this.$nextTick(function(){
+        console.log(data,9999)
         this.$refs.exampleTestItem.updateData(this.dataObj);
       });
-      
+
     },
   },
 };

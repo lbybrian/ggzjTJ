@@ -29,11 +29,11 @@ export default {
           }
         },
         indicator: [
-          { name: "速度评分", max: 100, },
-          { name: "力量评分", max: 100 },
-          { name: "耐力评分", max: 100 },
-          { name: "灵敏度评分", max: 100 },
-          { name: "柔韧度评分", max: 100 },
+          { name: "速度评分", max: 100, radius:85,center:["50%","50%"],},
+          { name: "力量评分", max: 100,radius:85,center:["50%","50%"],},
+          { name: "耐力评分", max: 100 ,radius:85,center:["50%","50%"],},
+          { name: "灵敏度评分", max: 100 ,radius:85,center:["50%","50%"],},
+          { name: "柔韧度评分", max: 100,radius:85,center:["50%","50%"], },
         ],
         axisLine:{
           show: true,
@@ -42,12 +42,37 @@ export default {
           }
         }
       },
+      // 图表的默认数据
       dataInfo: {
         itemStyle: {
           type: "radar",
         },
-        title: "",
-        radarStyle: {},
+        title: { 
+          text: "在Vue中使用echarts",
+          textStyle:{
+                color:"#fff"
+              },
+         },
+        radarStyle: {
+          name: {
+          textStyle: {
+            color: '#959595',
+          }
+        },
+        indicator: [
+          { name: "速度评分", max: 100, radius:85,center:["50%","50%"],},
+          { name: "力量评分", max: 100,radius:85,center:["50%","50%"],},
+          { name: "耐力评分", max: 100 ,radius:85,center:["50%","50%"],},
+          { name: "灵敏度评分", max: 100 ,radius:85,center:["50%","50%"],},
+          { name: "柔韧度评分", max: 100,radius:85,center:["50%","50%"], },
+        ],
+        axisLine:{
+          show: true,
+          lineStyle:{
+            color:'#cecece'
+          }
+        }
+        },
         data: [
           {
             name: "张三",
@@ -71,6 +96,7 @@ export default {
     dataObj: Object,
   },
   mounted() {
+    // 组件加载到页面后，更新图表
     var data = this.dataInfo;
     this.$nextTick(function () {
       var tData = this.dataObj || this.dataInfo;
@@ -78,6 +104,7 @@ export default {
     });
   },
   methods: {
+    //更新组件数据，并重绘图表
     updateData(data) {
       //恢复默认
       this.dataInfo = {
@@ -105,12 +132,13 @@ export default {
       //按新的option更新图表
       this.initChart();
     },
+
+    // 生成实际echart所需要option
     updateOption() {
       var data = this.dataInfo;
-      this.option.title = data.titleStyle;
-      this.option.title.text = data.title;
+      this.option.title = {...data.title};
       this.option.series = [];
-      this.option.radar = data.radarStyle;
+      this.option.radar = {...data.radarStyle};
       this.option.legend = data.legendStyle;
       this.option.legend.data = [];
       this.option.color = data.color;
@@ -127,6 +155,14 @@ export default {
       }
       this.option.tooltip = data.tooltip;
     },
+
+    // 初始化图表
+    initChart() {
+      var elem = this.$refs.chartItem;
+      this.updateView(elem, this.option);
+    },
+
+    //按option更新图表
     updateView(elem, option) {
       if (this.chart) {
         echarts.dispose(this.chart);
@@ -137,10 +173,7 @@ export default {
       this.chart.setOption(option);
       this.initChartEvent();
     },
-    initChart() {
-      var elem = this.$refs.chartItem;
-      this.updateView(elem, this.option);
-    },
+    //初始化组件所支持的用户事件
     initChartEvent() {
       var _self = this;
       this.chart.off("click");
